@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office для macOS | Премиум-гайд</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-blue: #007AFF;
+            --accent-blue-hover: #0056b3;
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --text-primary: #1d1d1f;
+            --text-secondary: rgba(0, 0, 0, 0.55);
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: #fbfbfd;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-primary);
+            padding: 4rem 1rem;
+            overflow-x: hidden;
+            -webkit-user-select: none;
+            user-select: none;
+            position: relative;
+        }
+
+        /* Liquid Background Elements */
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.2) 0%, rgba(88, 204, 2, 0.1) 100%);
+            filter: blur(80px);
+            border-radius: 50%;
+            animation: move 25s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -5s;
+            width: 800px;
+            height: 800px;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 30%;
+            width: 400px;
+            height: 400px;
+            opacity: 0.5;
+            animation-duration: 30s;
+        }
+
+        @keyframes move {
+            from {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+
+            to {
+                transform: translate(100px, 100px) rotate(30deg) scale(1.1);
+            }
+        }
+
+        /* Typography */
+        h1 {
+            font-size: clamp(2rem, 8vw, 2.7rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            color: #000;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-bottom: 4rem;
+            letter-spacing: 0.01em;
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 720px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Premium Glass Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: clamp(2rem, 5vw, 4rem);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 3rem;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .card-title {
+            font-size: 2.1rem;
+            font-weight: 750;
+            margin-bottom: 2rem;
+            color: #000;
+            letter-spacing: -0.02em;
+        }
+
+        /* Progress (macOS style refined) */
+        .progress-indicator {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent-blue);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Info Box - Liquid styled */
+        .info-box {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 28px;
+            padding: 2.2rem;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 2.5rem;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .info-box strong {
+            font-weight: 700;
+            color: #000;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Buttons Styling */
+        .btn-stack {
+            display: flex;
+            gap: 1.2rem;
+            flex-direction: column;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1.4rem;
+            border-radius: 22px;
+            border: none;
+            font-family: inherit;
+            font-size: 1.35rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+        .btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: #fff;
+            box-shadow: 0 15px 30px rgba(0, 122, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(0, 0, 0, 0.1);
+            color: #000;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        /* Step List */
+        .step-list {
+            text-align: left;
+            margin-bottom: 2.5rem;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+
+        .step-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .step-number {
+            background: #000;
+            color: white;
+            min-width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .step-content {
+            font-size: 1.3rem;
+            line-height: 1.5;
+            color: #1d1d1f;
+        }
+
+        /* Review Section */
+        .feedback-btn {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: #fff;
+            padding: 2.2rem;
+            width: 100%;
+            border-radius: 30px;
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feedback-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Header Icon Animation */
+        .floating-icon {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+            animation: float 4s infinite ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .glass-card {
+                padding: 2rem 1.5rem;
+                border-radius: 32px;
+            }
+
+            .card-title {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                font-size: 1.2rem;
+            }
+
+            .blob {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="liquid-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header style="display: flex; flex-direction: column; align-items: center; margin-bottom: 3rem;">
+            <div class="floating-icon">
+                <img src="macos.png" alt="macOS" style="width: 100%; height: auto;">
+            </div>
+            <h1>Office для Mac</h1>
+            <p class="subtitle">Инструкция по установке • boywithalo</p>
+        </header>
+
+        <!-- STEP 1 -->
+        <div id="step-1" class="glass-card">
+            <div class="progress-indicator">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <h2 class="card-title">Установка</h2>
+
+            <div class="info-box">
+                <strong>1. Скачайте установщик</strong>
+                <p>Нажмите на кнопку ниже, чтобы загрузить официальный пакет Microsoft Office. Размер составляет ~2 ГБ.
+                </p>
+            </div>
+
+            <div class="btn-stack">
+                <a href="https://go.microsoft.com/fwlink/p/?linkid=525133" class="btn btn-primary"
+                    onclick="showStep(2)">Скачать Office (PKG)</a>
+                <p
+                    style="margin: 1.5rem 0; font-size: 1.1rem; color: #555; font-weight: 500; line-height: 1.4; text-align: center;">
+                    Запустите файл PKG и следуйте инструкциям.<br>
+                    <span style="color: #ff3b30; font-weight: 800; font-size: 1.6rem;">ВАЖНО: Пока не запускайте
+                        программы.  </span>
+                </p>
+                <button class="btn btn-secondary" onclick="showStep(2)">Готово? Следующий шаг →</button>
+            </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div id="step-2" class="glass-card hidden">
+            <div class="progress-indicator">
+                <div class="dot"></div>
+                <div class="dot active"></div>
+                <div class="dot"></div>
+            </div>
+            <h2 class="card-title">Активация</h2>
+
+            <div class="info-box">
+                <p>Загрузите сериализатор лицензии, чтобы разблокировать все премиум-функции Office.</p>
+            </div>
+
+            <div class="btn-stack">
+                <a href="https://buzzheavier.com/ysb9003nnj0m" target="_blank" class="btn btn-primary"
+                    onclick="showStep(3)">Скачать Активатор</a>
+                <button class="btn btn-secondary" onclick="showStep(3)">Проблемы с безопасностью? Нажмите сюда</button>
+            </div>
+
+            <div style="margin-top: 3rem; text-align: left; opacity: 0.8; font-size: 1.1rem;">
+                <p style="margin-bottom: 0.8rem;">1. Извлеките и откройте активатор.</p>
+                <p>2. Если macOS заблокирует запуск — это нормально, следуйте инструкции дальше.</p>
+            </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div id="step-3" class="glass-card hidden">
+            <div class="progress-indicator">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot active"></div>
+            </div>
+            <h2 class="card-title">Обход защиты</h2>
+
+            <div class="step-list">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">Откройте <strong>Системные настройки</strong></div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">Перейдите в <strong>Конфиденциальность и безопасность</strong></div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">Прокрутите вниз до раздела безопасности</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">Нажмите <strong>"Подтвердить вход"</strong> (или Open Anyway)</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div class="step-content">Введите пароль от Mac. Запустите активатор.</div>
+                </div>
+            </div>
+
+            <div class="info-box" style="background: rgba(52, 199, 89, 0.05); border-color: rgba(52, 199, 89, 0.2);">
+                <p>✨ <strong>Готово!</strong></p>
+                <p>После активации откройте Word. Всё готово к работе!</p>
+            </div>
+
+            <a href="https://playerok.com/profile/boywithalo/products" target="_blank" class="feedback-btn">
+                <span style="font-size: 1.4rem; font-weight: 800;">Оставить отзыв ♥</span>
+                <span style="opacity: 0.7; font-size: 1.1rem;">Это очень мне поможет!</span>
+            </a>
+        </div>
+
+        <p style="text-align:center; opacity:0.4; font-size:1rem; margin-top:2rem; font-weight: 500;">boywithalo •
+            Премиум Поддержка</p>
+    </div>
+
+    <script>
+        function showStep(stepNum) {
+            const steps = [1, 2, 3];
+            steps.forEach(s => {
+                const el = document.getElementById('step-' + s);
+                if (s === stepNum) {
+                    el.classList.remove('hidden');
+                    el.style.opacity = '1';
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Anti-Inspect
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85) || (e.ctrlKey && e.keyCode == 83)) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>

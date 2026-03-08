@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Office Error Fix | boywithalo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F2F2F7;
+            --text-primary: #1C1C1E;
+            --text-secondary: #8E8E93;
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --card-border: rgba(255, 255, 255, 0.4);
+            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            --accent-green: #34C759;
+            --accent-blue: #007AFF;
+            --info-box-bg: rgba(255, 255, 255, 0.5);
+            --font-main: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+            --radius-xl: 40px;
+            --radius-l: 24px;
+            --radius-m: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: #E8F0FE;
+            background-image:
+                radial-gradient(circle at top left, #c4e0ff, transparent 40%),
+                radial-gradient(circle at bottom right, #ffd1ea, transparent 50%),
+                radial-gradient(circle at bottom left, #d8f5d0, transparent 40%),
+                radial-gradient(circle at top right, #eaddff, transparent 40%);
+            background-attachment: fixed;
+            background-size: 200% 200%;
+            animation: bgShift 15s ease infinite alternate;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-primary);
+            padding: 3rem 1rem;
+            overflow-x: hidden;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: #000;
+            letter-spacing: -0.04em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 3rem;
+            letter-spacing: -0.01em;
+        }
+
+        /* Animations */
+        @keyframes bgShift {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 760px;
+            position: relative;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(40px) saturate(200%);
+            -webkit-backdrop-filter: blur(40px) saturate(200%);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            text-align: center;
+            position: relative;
+            transform: translateZ(0);
+        }
+
+        .card-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        /* New Utilities for Large Text */
+        .instruction-text {
+            text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .note-box {
+            background: rgba(0, 0, 0, 0.03);
+            padding: 1.8rem;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #444;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .note-box strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .btn-blue {
+            background: linear-gradient(135deg, #4A88FF 0%, #1A5FFF 100%);
+            color: #fff;
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            border-radius: 28px;
+            font-weight: 600;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow:
+                0 6px 20px rgba(26, 95, 255, 0.25),
+                inset 0 1px 2px rgba(255, 255, 255, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.02em;
+        }
+
+        .btn-blue:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 10px 28px rgba(26, 95, 255, 0.35),
+                inset 0 1px 2px rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, #5C95FF 0%, #296AFF 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-blue:active {
+            transform: translateY(1px) scale(0.97);
+            box-shadow:
+                0 4px 12px rgba(26, 95, 255, 0.2),
+                inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Code Block */
+        .code-block-container {
+            background: #000;
+            border-radius: 24px;
+            padding: 0.8rem 0.8rem 0.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 1.5rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .code-text {
+            color: #fff;
+            font-family: 'SF Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-right: 1rem;
+            -webkit-user-select: text;
+            user-select: text;
+            text-align: left;
+        }
+
+        .footer-note {
+            text-align: center;
+            opacity: 0.5;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Исправление ошибки</h1>
+            <p class="subtitle">Инструкция по сбросу региона в реестре</p>
+        </header>
+
+        <!-- Fix Card -->
+        <div class="card">
+            <h2 class="card-title">Сброс региона</h2>
+
+            <div class="instruction-text">
+                Нажмите <strong>Win + S</strong> и введите <strong>cmd</strong>
+            </div>
+
+            <div class="instruction-text">
+                Кликните <strong>правой кнопкой мыши</strong> по «Командная строка» и выберите<br>
+                <em>Запуск от имени администратора</em>
+            </div>
+
+            <div class="instruction-text" style="margin-bottom: 0.5rem;">
+                В открывшемся окне вставьте команду:
+            </div>
+
+            <div class="code-block-container">
+                <span class="code-text" id="fix-cmd">reg add
+                    "HKCU\Software\Microsoft\Office\16.0\Common\ExperimentConfigs\Ecs" /v "CountryCode" /t REG_SZ /d
+                    "std::wstring|US" /f</span>
+                <button class="btn-blue" onclick="copyCmd(this)">Скопировать</button>
+            </div>
+
+            <div class="note-box">
+                <strong>Зачем это нужно?</strong><br>
+                При первом запуске без VPN Office мог сохранить неверный регион. Эта команда сбрасывает его.
+            </div>
+
+            <button class="btn-blue" style="width:100%; padding: 1.5rem; font-size:1.3rem; margin-top:1rem;"
+                onclick="window.location.href='https://activate.office.alorly.com'">
+                Вернуться к инструкции
+            </button>
+        </div>
+
+        <p class="footer-note">playerok: boywithalo</p>
+
+    </div>
+
+    <script>
+        function copyCmd(btn) {
+            // Robust fallback
+            if (!btn && window.event) btn = window.event.target || window.event.srcElement;
+
+            const text = document.getElementById('fix-cmd').innerText;
+            const originalText = btn.innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                btn.innerText = 'Скопировано! ✅';
+                btn.style.background = '#28a745';
+                btn.style.transform = 'scale(1.05)';
+                btn.style.color = '#fff';
+
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = ''; /* Revert to CSS */
+                    btn.style.transform = '';
+                    btn.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                console.error("Copy failed", err);
+                alert("Не удалось скопировать автоматически. Пожалуйста, скопируйте вручную.");
+            });
+        }
+
+        // Anti-Inspect
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', function (e) {
+            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85) || (e.ctrlKey && e.keyCode == 83)) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+</body>
+
+</html>
