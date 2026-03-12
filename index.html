@@ -43,7 +43,6 @@
                 radial-gradient(circle at top right, #eaddff, transparent 40%);
             background-attachment: fixed;
             background-size: 200% 200%;
-            animation: bgShift 15s ease infinite alternate;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -74,36 +73,6 @@
             letter-spacing: -0.01em;
         }
 
-        /* Animations */
-        @keyframes bgShift {
-            0% {
-                background-position: 0% 0%;
-            }
-
-            100% {
-                background-position: 100% 100%;
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95) translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                transform: scale(0.95) translateY(-10px);
-            }
-        }
-
         /* Layout */
         .container {
             width: 100%;
@@ -121,7 +90,6 @@
             padding: 3rem;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.8);
             margin-bottom: 2rem;
-            animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             text-align: center;
             position: relative;
             transform: translateZ(0);
@@ -466,10 +434,6 @@
             display: none;
         }
 
-        .fade-exit {
-            animation: fadeOut 0.4s forwards;
-        }
-
         /* Video Modal */
         #video-container {
             overflow: hidden;
@@ -680,26 +644,15 @@
             const step2 = document.getElementById('step-2');
             const installCard = document.getElementById('install-card');
 
-            // Animate exit of step 1
-            step1.classList.add('fade-exit');
+            step1.style.display = 'none';
+            step2.classList.remove('hidden');
 
-            setTimeout(() => {
-                step1.style.display = 'none';
-                step2.classList.remove('hidden');
-
-                // If installed, hide the install card logic
-                if (isInstalled) {
-                    installCard.style.display = 'none';
-                } else {
-                    installCard.style.display = 'block';
-                    // Add animation class explicitly if needed, but 'card' has entry animation
-                }
-
-                // Trigger entry animations for step 2 children?
-                // The children have individual animations if they are 'card'.
-                // Since the container was hidden, showing it restarts CSS animations for children? 
-                // Mostly yes, for display:none -> block.
-            }, 350);
+            // If installed, hide the install card logic
+            if (isInstalled) {
+                installCard.style.display = 'none';
+            } else {
+                installCard.style.display = 'block';
+            }
         }
 
         function toggleVideo() {
