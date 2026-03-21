@@ -530,15 +530,15 @@
             </div>
 
             <div class="btn-group">
-                <button class="btn btn-white" onclick="goToStep2(false)">Нет, не установлен</button>
-                <button class="btn btn-green" onclick="goToStep2(true)">Да, установлен</button>
+                <button type="button" class="btn btn-white" onclick="goToStep2(false)">Нет, не установлен</button>
+                <button type="button" class="btn btn-green" onclick="goToStep2(true)">Да, установлен</button>
             </div>
         </div>
 
         <!-- STEP 2: INSTALL & ACTIVATE -->
         <div id="step-2" class="hidden">
 
-            <button class="btn-guide" onclick="toggleVideo()">
+            <button type="button" class="btn-guide" onclick="toggleVideo()">
                 <span style="font-size: 1.5rem;">📄</span>Видео-гайд (Кликните)
             </button>
             <div id="video-container">
@@ -562,12 +562,12 @@
                 <h2 class="card-title">Установка Office</h2>
 
                 <div class="version-selector">
-                    <a href="https://link.alorly.com/o365" target="_blank"
+                    <a href="https://link.alorly.com/officemain" target="_blank"
                         class="version-pill gradient-border">Office
                         365</a>
-                    <a href="https://link.alorly.com/o2024" target="_blank" class="version-pill">Office
+                    <a href="https://link.alorly.com/officesecond" target="_blank" class="version-pill">Office
                         2024</a>
-                    <a href="https://link.alorly.com/o2021" target="_blank" class="version-pill">Office
+                    <a href="https://link.alorly.com/officethird" target="_blank" class="version-pill">Office
                         2021</a>
                 </div>
 
@@ -607,7 +607,7 @@
 
                 <div class="code-block-container">
                     <span class="code-text" id="cmd-text">irm https://get.activated.win | iex</span>
-                    <button class="btn btn-blue" onclick="copyCmd(this)">Скопировать</button>
+                    <button type="button" class="btn btn-blue" onclick="copyCmd(this)">Скопировать</button>
                 </div>
 
                 <div class="tip" style="background: rgba(100, 100, 255, 0.1);">
@@ -623,7 +623,7 @@
                     Если вышла - значит все готово! Откройте офис и проверьте наличие активации
                 </div>
 
-                <button class="btn btn-blue-review"
+                <button type="button" class="btn btn-blue-review"
                     onclick="window.open('https://playerok.com/profile/boywithalo/products', '_blank')">
                     <span>Если все получилось, не забудьте подтвердить заказ</span>
                     <span style="font-weight: 700;">и оставить отзыв ♥</span>
@@ -637,55 +637,92 @@
 
     <script>
         function goToStep2(isInstalled) {
-            const step1 = document.getElementById('step-1');
-            const step2 = document.getElementById('step-2');
-            const installCard = document.getElementById('install-card');
+            var step1 = document.getElementById('step-1');
+            var step2 = document.getElementById('step-2');
+            var installCard = document.getElementById('install-card');
+
+            if (!step1 || !step2) {
+                return;
+            }
 
             step1.style.display = 'none';
-            step2.classList.remove('hidden');
 
-            // If installed, hide the install card logic
-            if (isInstalled) {
-                installCard.style.display = 'none';
+            if (step2.classList && step2.classList.remove) {
+                step2.classList.remove('hidden');
             } else {
-                installCard.style.display = 'block';
+                step2.className = step2.className.replace(/\bhidden\b/g, '').replace(/\s{2,}/g, ' ');
+            }
+
+            if (installCard) {
+                installCard.style.display = isInstalled ? 'none' : 'block';
+            }
+
+            if (typeof step2.scrollIntoView === 'function') {
+                step2.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
         function toggleVideo() {
-            const container = document.getElementById('video-container');
-            container.classList.toggle('open');
+            var container = document.getElementById('video-container');
+
+            if (!container) {
+                return;
+            }
+
+            if (container.classList && container.classList.toggle) {
+                container.classList.toggle('open');
+            } else if (/\bopen\b/.test(container.className)) {
+                container.className = container.className.replace(/\bopen\b/g, '').replace(/\s{2,}/g, ' ');
+            } else {
+                container.className += ' open';
+            }
         }
 
         function copyCmd(btn) {
-            // Robust fallback
-            if (!btn && window.event) btn = window.event.target || window.event.srcElement;
+            var textNode;
+            var text;
+            var originalText;
 
-            const text = document.getElementById('cmd-text').innerText;
-            const originalText = btn.innerText;
+            if (!btn && window.event) {
+                btn = window.event.target || window.event.srcElement;
+            }
 
-            navigator.clipboard.writeText(text).then(() => {
-                btn.innerText = 'Скопировано! ✅';
-                btn.style.background = '#28a745';
-                btn.style.transform = 'scale(1.05)';
-                btn.style.color = '#fff';
+            textNode = document.getElementById('cmd-text');
+            if (!btn || !textNode) {
+                return;
+            }
 
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.background = ''; /* Revert to CSS */
-                    btn.style.transform = '';
-                    btn.style.color = '';
-                }, 2000);
-            }).catch(err => {
-                console.error("Copy failed", err);
-                alert("Не удалось скопировать автоматически. Пожалуйста, скопируйте вручную.");
-            });
+            text = textNode.innerText || textNode.textContent;
+            originalText = btn.innerText || btn.textContent;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(function () {
+                    btn.innerText = 'Скопировано! ✅';
+                    btn.style.background = '#28a745';
+                    btn.style.transform = 'scale(1.05)';
+                    btn.style.color = '#fff';
+
+                    setTimeout(function () {
+                        btn.innerText = originalText;
+                        btn.style.background = '';
+                        btn.style.transform = '';
+                        btn.style.color = '';
+                    }, 2000);
+                }).catch(function (err) {
+                    console.error('Copy failed', err);
+                    alert('Не удалось скопировать автоматически. Пожалуйста, скопируйте вручную.');
+                });
+            } else {
+                alert('Не удалось скопировать автоматически. Пожалуйста, скопируйте вручную.');
+            }
         }
 
         // Anti-Inspect
-        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('contextmenu', function (event) {
+            event.preventDefault();
+        });
         document.addEventListener('keydown', function (e) {
-            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85) || (e.ctrlKey && e.keyCode == 83)) {
+            if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67 || e.keyCode === 74)) || (e.ctrlKey && e.keyCode === 85) || (e.ctrlKey && e.keyCode === 83)) {
                 e.preventDefault();
                 return false;
             }
