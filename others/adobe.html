@@ -1,0 +1,827 @@
+    <!DOCTYPE html>
+    <html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Adobe - Инструкция и Ссылки | boywithalo</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --accent-blue: #007AFF;
+                --accent-blue-glow: rgba(0, 122, 255, 0.4);
+                --glass-bg: rgba(255, 255, 255, 0.45);
+                --glass-border: rgba(255, 255, 255, 0.6);
+                --text-primary: #1d1d1f;
+                --text-secondary: rgba(0, 0, 0, 0.6);
+                --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+                --card-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+                --radius-xl: 40px;
+                --radius-l: 28px;
+
+                /* Adobe Icon Colors */
+                --ps-color: #31A8FF;
+                --ai-color: #FF9A00;
+                --id-color: #FF3366;
+                --ae-color: #CF96FD;
+                --pr-color: #EA77FF;
+                --ac-color: #FF0000;
+                --me-color: #00E676;
+                --an-color: #FF4B32;
+                --xd-color: #FF61F6;
+                --au-color: #00E5FF;
+                --lr-color: #31A8FF;
+                --br-color: #FFC400;
+                --dw-color: #FF31D3;
+                --default-adobe: #FF0000;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            body {
+                font-family: var(--font-main);
+                background: #f8f9fa;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: var(--text-primary);
+                padding: 5rem 1.5rem;
+                overflow-x: hidden;
+                -webkit-user-select: none;
+                user-select: none;
+                position: relative;
+            }
+
+            /* Liquid Glass Background */
+            .liquid-bg {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                overflow: hidden;
+                background: linear-gradient(135deg, #fffaf5 0%, #f0f4f8 100%);
+            }
+
+            .blob {
+                position: absolute;
+                width: 700px;
+                height: 700px;
+                background: linear-gradient(135deg, rgba(0, 122, 255, 0.15) 0%, rgba(0, 100, 255, 0.08) 100%);
+                filter: blur(90px);
+                border-radius: 50%;
+                animation: drift 25s infinite alternate ease-in-out;
+            }
+
+            .blob-1 {
+                top: -200px;
+                right: -150px;
+            }
+
+            .blob-2 {
+                bottom: -250px;
+                left: -150px;
+                width: 900px;
+                height: 900px;
+                animation-delay: -7s;
+            }
+
+            .blob-3 {
+                top: 30%;
+                left: 20%;
+                width: 500px;
+                height: 500px;
+                opacity: 0.4;
+                animation-duration: 35s;
+            }
+
+            @keyframes drift {
+                from {
+                    transform: translate(0, 0) rotate(0deg) scale(1);
+                }
+
+                to {
+                    transform: translate(150px, 120px) rotate(45deg) scale(1.15);
+                }
+            }
+
+            .container {
+                width: 100%;
+                max-width: 860px;
+                position: relative;
+                z-index: 1;
+            }
+
+            /* Typography */
+            header {
+                text-align: center;
+                margin-bottom: 4rem;
+            }
+
+            h1 {
+                font-size: clamp(2.2rem, 8vw, 3.2rem);
+                font-weight: 850;
+                letter-spacing: -0.04em;
+                margin-bottom: 0.5rem;
+                background: linear-gradient(135deg, #000 0%, #444 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .subtitle {
+                font-size: 1.25rem;
+                color: var(--text-secondary);
+                font-weight: 500;
+            }
+
+            /* Glass Cards */
+            .glass-card {
+                background: var(--glass-bg);
+                backdrop-filter: blur(28px) saturate(180%);
+                -webkit-backdrop-filter: blur(28px) saturate(180%);
+                border: 1px solid var(--glass-border);
+                border-radius: var(--radius-xl);
+                padding: 3.5rem;
+                box-shadow: var(--card-shadow);
+                margin-bottom: 2.5rem;
+                animation: cardAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+            }
+
+            @keyframes cardAppear {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px) scale(0.98);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+
+            .card-title {
+                font-size: 2.2rem;
+                font-weight: 800;
+                margin-bottom: 1.8rem;
+                letter-spacing: -0.02em;
+            }
+
+            /* Welcome Section */
+            .welcome-text {
+                font-size: 1.4rem;
+                line-height: 1.6;
+                color: #333;
+                margin-bottom: 1rem;
+            }
+
+            .seller-info {
+                color: var(--accent-blue);
+                font-weight: 700;
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+                display: block;
+            }
+
+            /* Warning Section */
+            .warning-card {
+                background: rgba(255, 70, 0, 0.04);
+                border: 1px solid rgba(255, 70, 0, 0.2);
+            }
+
+            .warning-badge {
+                display: inline-flex;
+                align-items: center;
+                padding: 0.6rem 1.2rem;
+                background: #ff3b30;
+                color: white;
+                border-radius: 12px;
+                font-weight: 800;
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+                gap: 8px;
+            }
+
+            .warning-text {
+                font-size: 1.35rem;
+                font-weight: 600;
+                line-height: 1.5;
+                color: #000;
+            }
+
+            .screenshot-container {
+                margin: 2.5rem 0;
+                border-radius: 20px;
+                overflow: hidden;
+                border: 1px solid var(--glass-border);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            }
+
+            .screenshot-container img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .img-caption {
+                display: block;
+                background: white;
+                padding: 1rem;
+                text-align: center;
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #ff3b30;
+            }
+
+            /* Requirements and Keys */
+            .key-box {
+                background: #000;
+                color: #fff;
+                padding: 2.5rem;
+                border-radius: var(--radius-l);
+                text-align: center;
+                margin-top: 2rem;
+            }
+
+            .key-title {
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                opacity: 0.6;
+                margin-bottom: 1rem;
+            }
+
+            .key-value {
+                font-family: 'Monaco', 'Consolas', monospace;
+                font-size: 2.4rem;
+                font-weight: 700;
+                color: var(--accent-blue);
+                display: block;
+                margin: 1rem 0;
+                cursor: pointer;
+                transition: transform 0.2s;
+            }
+
+            .key-value:active {
+                transform: scale(0.95);
+            }
+
+            .winrar-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                background: rgba(255, 255, 255, 0.1);
+                padding: 1rem;
+                border-radius: 15px;
+                color: #fff;
+                text-decoration: none;
+                margin-top: 1.5rem;
+                font-weight: 600;
+                transition: background 0.3s;
+            }
+
+            .winrar-link:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            /* Links Library */
+            .links-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .link-item {
+                display: flex;
+                align-items: center;
+                padding: 1.2rem 1.5rem;
+                background: rgba(255, 255, 255, 0.6);
+                border-radius: 22px;
+                text-decoration: none;
+                color: #000;
+                font-weight: 600;
+                font-size: 1.1rem;
+                border: 1px solid transparent;
+                transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .link-item:hover {
+                background: #fff;
+                border-color: var(--accent-blue);
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px var(--accent-blue-glow);
+            }
+
+            .link-icon {
+                margin-right: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                border-radius: 6px;
+                font-size: 0.85rem;
+                font-weight: 800;
+                color: #fff;
+                flex-shrink: 0;
+                border: 1.5px solid transparent;
+            }
+
+            /* Icon Variants */
+            .icon-ps {
+                background: #001E36;
+                color: #31A8FF;
+                border-color: #31A8FF;
+            }
+
+            .icon-pr {
+                background: #130024;
+                color: #EA77FF;
+                border-color: #EA77FF;
+            }
+
+            .icon-ae {
+                background: #130024;
+                color: #CF96FD;
+                border-color: #CF96FD;
+            }
+
+            .icon-ai {
+                background: #331C00;
+                color: #FF9A00;
+                border-color: #FF9A00;
+            }
+
+            .icon-id {
+                background: #2F0013;
+                color: #FF3366;
+                border-color: #FF3366;
+            }
+
+            .icon-ac {
+                background: #ED2224;
+                color: #fff;
+            }
+
+            .icon-me {
+                background: #002D17;
+                color: #00E676;
+                border-color: #00E676;
+            }
+
+            .icon-an {
+                background: #2C0700;
+                color: #FF4B32;
+                border-color: #FF4B32;
+            }
+
+            .icon-xd {
+                background: #2E001F;
+                color: #FF61F6;
+                border-color: #FF61F6;
+            }
+
+            .icon-au {
+                background: #00202E;
+                color: #00E5FF;
+                border-color: #00E5FF;
+            }
+
+            .icon-lr {
+                background: #001E36;
+                color: #31A8FF;
+                border-color: #31A8FF;
+            }
+
+            .icon-br {
+                background: #262100;
+                color: #FFC400;
+                border-color: #FFC400;
+            }
+
+            .icon-dw {
+                background: #22001A;
+                color: #FF31D3;
+                border-color: #FF31D3;
+            }
+
+            .icon-sa {
+                background: #1E004B;
+                color: #AEEA00;
+                border-color: #AEEA00;
+            }
+
+            .icon-ch {
+                background: #00262E;
+                color: #2EE5FF;
+                border-color: #2EE5FF;
+            }
+
+            .icon-cc {
+                background: #fff;
+                border-color: #ED2224;
+            }
+
+            .icon-gen {
+                background: #333;
+                color: #fff;
+            }
+
+            .adobe-logo-header {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 2rem;
+                display: block;
+                filter: drop-shadow(0 0 20px var(--accent-blue-glow));
+            }
+
+            /* Review Button */
+            .feedback-btn {
+                background: linear-gradient(135deg, #007AFF 0%, #0056b3 100%);
+                color: #fff;
+                padding: 2.5rem;
+                width: 100%;
+                border-radius: var(--radius-l);
+                margin-top: 1rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+                border: none;
+                cursor: pointer;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                text-decoration: none;
+                box-shadow: 0 20px 40px var(--accent-blue-glow);
+            }
+
+            .feedback-btn:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 30px 60px var(--accent-blue-glow);
+            }
+
+            .feedback-btn span:first-child {
+                font-size: 1.8rem;
+                font-weight: 850;
+            }
+
+            .feedback-btn span:last-child {
+                font-size: 1.2rem;
+                opacity: 0.9;
+                font-weight: 500;
+            }
+
+            /* Responsive */
+            @media (max-width: 650px) {
+                .glass-card {
+                    padding: 2.5rem 1.5rem;
+                    border-radius: 32px;
+                }
+
+                .links-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .key-value {
+                    font-size: 1.8rem;
+                }
+            }
+
+            .copy-toast {
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%) translateY(100px);
+                background: #000;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                font-weight: 600;
+                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 1000;
+            }
+
+            .copy-toast.show {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            /* Watermark Styles */
+            .bg-watermark {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-30deg);
+                font-size: clamp(5rem, 15vw, 12rem);
+                font-weight: 900;
+                color: rgba(0, 122, 255, 0.04);
+                white-space: nowrap;
+                pointer-events: none;
+                z-index: -1;
+                user-select: none;
+                letter-spacing: -0.05em;
+            }
+
+            .card-watermark {
+                position: absolute;
+                top: 15px;
+                right: 25px;
+                font-size: 0.75rem;
+                color: var(--accent-blue);
+                text-decoration: none;
+                font-weight: 700;
+                opacity: 0.2;
+                transition: all 0.3s ease;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                z-index: 10;
+            }
+
+            .card-watermark:hover {
+                opacity: 0.8;
+                transform: translateY(-2px);
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="bg-watermark">BOYWITHALO</div>
+
+        <div class="liquid-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+
+        <div class="container">
+            <!-- Header -->
+            <header>
+
+                <h1>🧡 Спасибо за покупку!</h1>
+                <p class="subtitle">Ваш проводник в мир Adobe • boywithalo</p>
+            </header>
+
+            <!-- Welcome Card -->
+            <div class="glass-card">
+                <a href="https://playerok.com/profile/boywithalo/products" target="_blank"
+                    class="card-watermark">playerok.com/boywithalo</a>
+                <span class="seller-info">*Ваш продавец*</span>
+                <div class="welcome-text">
+                    Мы искренне благодарим Вас за доверие! Рады, что Вы выбрали именно наш магазин
+                    для приобретения софта. Мы постоянно обновляем ассортимент, чтобы радовать Вас
+                    лучшими решениями. Если у Вас есть вопросы или Вам нужен конкретный товар —
+                    напишите в чат, мы всегда готовы помочь!
+                </div>
+            </div>
+
+            <!-- Warning Card -->
+            <div class="glass-card warning-card">
+                <a href="https://playerok.com/profile/boywithalo/products" target="_blank" class="card-watermark">boywithalo
+                    shop</a>
+                <div class="warning-badge">
+                    <span>❗❗❗</span> ВАЖНО ПРОЧЕСТЬ ДО КОНЦА
+                </div>
+                <p class="warning-text">
+                    После выбора программы, Вам надо будет пролистать страницу <strong>ВНИЗ</strong>!
+                    А не нажимать на рекламный баннер зеленого цвета "СКАЧАТЬ".
+                    Это Вы скачаете рекламу.
+                </p>
+
+                <div class="screenshot-container">
+                    <img src="img1.jpg" alt="Пример 1">
+                    <span class="img-caption">ВНИЗ ЛИСТАЕМ СТРАНИЦУ, А НЕ КЛИКАЕМ НА РЕКЛАМУ "СКАЧАТЬ"</span>
+                </div>
+
+                <p class="warning-text">
+                    Далее Вам нужна строчка именно <strong>"Скачать бесплатно ..."название программы"</strong>.
+                    Не нажимайте на рекламный баннер "СКАЧАТЬ".
+                </p>
+
+                <div class="screenshot-container">
+                    <img src="img2.jpg" alt="Пример 2">
+                    <span class="img-caption">НЕ КЛИКАЕМ НА РЕКЛАМУ "СКАЧАТЬ"</span>
+                </div>
+            </div>
+
+            <!-- Requirements Card -->
+            <div class="glass-card">
+                <a href="https://playerok.com/profile/boywithalo/products" target="_blank"
+                    class="card-watermark">boywithalo</a>
+                <h2 class="card-title">Подготовка</h2>
+                <div class="welcome-text">
+                    Для работы с архивом Вам понадобится программа <strong>WinRAR</strong>.
+                </div>
+
+                <a href="https://www.win-rar.com/start.html?&L=4" target="_blank" class="winrar-link"
+                    style="background:#007AFF; color:white;">
+                    <span>📦</span> Скачать WinRAR (Лицензия)
+                </a>
+
+                <div class="key-box">
+                    <div class="key-title">Ключ Активации Архива</div>
+                    <div class="key-value" onclick="copyKey('1progs')">1progs</div>
+                    <div style="opacity: 0.6; font-size: 0.9rem;">Нажмите, чтобы скопировать</div>
+                </div>
+            </div>
+
+            <!-- Links Card -->
+            <div class="glass-card">
+                <a href="https://playerok.com/profile/boywithalo/products" target="_blank" class="card-watermark">shop
+                    library</a>
+                <h2 class="card-title">Библиотека Adobe</h2>
+                <div class="links-grid">
+                    <a href="https://1progs.ru/adobe-premiere/" class="link-item">
+                        <div class="link-icon icon-pr">Pr</div> Adobe Premiere Pro
+                    </a>
+                    <a href="https://1progs.ru/adobe-after-effects/" class="link-item">
+                        <div class="link-icon icon-ae">Ae</div> Adobe After Effects
+                    </a>
+                    <a href="https://1progs.ru/adobe-animate/" class="link-item">
+                        <div class="link-icon icon-an">An</div> Adobe Animate
+                    </a>
+                    <a href="https://1progs.ru/adobe-acrobat-pro/" class="link-item">
+                        <div class="link-icon icon-ac">Ac</div> Adobe Acrobat Pro
+                    </a>
+                    <a href="https://1progs.ru/adobe-media-encoder/" class="link-item">
+                        <div class="link-icon icon-me">Me</div> Adobe Media Encoder
+                    </a>
+                    <a href="https://1progs.pro/adobe-speech-to-text-for-premiere-pro/" class="link-item">
+                        <div class="link-icon icon-pr">St</div> Speech to Text
+                    </a>
+                    <a href="https://1progs.pro/adobe-acrobat-reader-dc/" class="link-item">
+                        <div class="link-icon icon-ac">Ar</div> Acrobat Reader DC
+                    </a>
+                    <a href="https://1progs.pro/adobe-bridge/" class="link-item">
+                        <div class="link-icon icon-br">Br</div> Adobe Bridge
+                    </a>
+                    <a href="https://1progs.pro/adobe-substance-3d-sampler/" class="link-item">
+                        <div class="link-icon icon-sa">Sa</div> Substance 3D Sampler
+                    </a>
+                    <a href="https://1progs.ru/adobe-photoshop/" class="link-item">
+                        <div class="link-icon icon-ps">Ps</div> Adobe Photoshop
+                    </a>
+                    <a href="https://1progs.pro/adobe-substance-3d-modeler/" class="link-item">
+                        <div class="link-icon icon-sa">Mo</div> Substance 3D Modeler
+                    </a>
+                    <a href="https://1progs.pro/adobe-incopy/" class="link-item">
+                        <div class="link-icon icon-id">Ic</div> Adobe InCopy
+                    </a>
+                    <a href="https://1progs.pro/adobe-indesign/" class="link-item">
+                        <div class="link-icon icon-id">Id</div> Adobe InDesign
+                    </a>
+                    <a href="https://1progs.pro/adobe-creative-cloud-cleaner-tool/" class="link-item"><img
+                            src="https://cdn.simpleicons.org/adobecreativecloud/ED2224" class="link-icon"
+                            style="background:transparent; border:none; width:32px;">CC Cleaner Tool</a>
+                    <a href="https://1progs.ru/adobe-illustrator/" class="link-item">
+                        <div class="link-icon icon-ai">Ai</div> Adobe Illustrator
+                    </a>
+                    <a href="https://1progs.pro/adobe-audition/" class="link-item">
+                        <div class="link-icon icon-au">Au</div> Adobe Audition
+                    </a>
+                    <a href="https://1progs.pro/adobe-master-collection/" class="link-item"><img
+                            src="https://cdn.simpleicons.org/adobecreativecloud/ED2224" class="link-icon"
+                            style="background:transparent; border:none; width:32px;">Master Collection</a>
+                    <a href="https://1progs.pro/adobe-character-animator/" class="link-item">
+                        <div class="link-icon icon-ch">Ch</div> Character Animator
+                    </a>
+                    <a href="https://1progs.pro/adobe-lightroom-classic/" class="link-item">
+                        <div class="link-icon icon-lr">Lc</div> Lightroom Classic
+                    </a>
+                    <a href="https://1progs.pro/adobe-camera-raw/" class="link-item">
+                        <div class="link-icon icon-ps">Cr</div> Adobe Camera Raw
+                    </a>
+                    <a href="https://1progs.pro/adobe-dng-converter/" class="link-item">
+                        <div class="link-icon icon-ps">Dg</div> DNG Converter
+                    </a>
+                    <a href="https://1progs.pro/adobe-substance-3d-designer/" class="link-item">
+                        <div class="link-icon icon-sa">Ds</div> Substance 3D Designer
+                    </a>
+                    <a href="https://1progs.pro/adobe-substance-3d-stager/" class="link-item">
+                        <div class="link-icon icon-sa">St</div> Substance 3D Stager
+                    </a>
+                    <a href="https://1progs.pro/adobe-dimension/" class="link-item">
+                        <div class="link-icon icon-ch">Dn</div> Adobe Dimension
+                    </a>
+                    <a href="https://1progs.pro/adobe-premiere-elements/" class="link-item">
+                        <div class="link-icon icon-pr">Pe</div> Premiere Elements
+                    </a>
+                    <a href="https://1progs.pro/adobe-premiere-rush/" class="link-item">
+                        <div class="link-icon icon-pr">Ru</div> Premiere Rush
+                    </a>
+                    <a href="https://1progs.pro/adobe-prelude/" class="link-item">
+                        <div class="link-icon icon-pr">Pl</div> Adobe Prelude
+                    </a>
+                    <a href="https://1progs.pro/adobe-air/" class="link-item"><img
+                            src="https://cdn.simpleicons.org/adobe/ED2224" class="link-icon"
+                            style="background:transparent; border:none; width:32px;">Adobe AIR</a>
+                    <a href="https://1progs.pro/adobe-fresco/" class="link-item">
+                        <div class="link-icon icon-ps">Fr</div> Adobe Fresco
+                    </a>
+                    <a href="https://1progs.pro/adobe-photoshop-elements/" class="link-item">
+                        <div class="link-icon icon-ps">Pe</div> Photoshop Elements
+                    </a>
+                    <a href="https://1progs.pro/adobe-robohelp/" class="link-item">
+                        <div class="link-icon icon-gen">Rh</div> Adobe RoboHelp
+                    </a>
+                    <a href="https://1progs.pro/adobe-captivate/" class="link-item">
+                        <div class="link-icon icon-ac">Cp</div> Adobe Captivate
+                    </a>
+                    <a href="https://1progs.pro/adobe-xd/" class="link-item">
+                        <div class="link-icon icon-xd">Xd</div> Adobe XD
+                    </a>
+                    <a href="https://1progs.pro/adobe-framemaker/" class="link-item">
+                        <div class="link-icon icon-gen">Fm</div> Adobe FrameMaker
+                    </a>
+                    <a href="https://1progs.pro/adobe-photoshop-express/" class="link-item">
+                        <div class="link-icon icon-ps">Px</div> Photoshop Express
+                    </a>
+                    <a href="https://1progs.pro/adobe-photoshop-cs6-extended/" class="link-item">
+                        <div class="link-icon icon-ps">Ps</div> Photoshop CS6
+                    </a>
+                    <a href="https://1progs.pro/adobe-dreamweaver/" class="link-item">
+                        <div class="link-icon icon-dw">Dw</div> Adobe Dreamweaver
+                    </a>
+                    <a href="https://1progs.pro/adobe-photoshop-lightroom/" class="link-item">
+                        <div class="link-icon icon-lr">Lr</div> Photo. Lightroom
+                    </a>
+                    <a href="https://1progs.pro/plexus/" class="link-item">
+                        <div class="link-icon icon-ae">Pl</div> Plexus for AE
+                    </a>
+                    <a href="https://1progs.pro/adobe-speedgrade/" class="link-item">
+                        <div class="link-icon icon-gen">Sg</div> Adobe SpeedGrade
+                    </a>
+                    <a href="https://1progs.pro/adobe-flash-player/" class="link-item">
+                        <div class="link-icon icon-an">Fl</div> Adobe Flash Player
+                    </a>
+                    <a href="https://1progs.pro/adobe-application-manager/" class="link-item">
+                        <div class="link-icon icon-gen">Am</div> App Manager
+                    </a>
+                    <a href="https://1progs.pro/adobe-flash-professional/" class="link-item">
+                        <div class="link-icon icon-an">Fl</div> Flash Professional
+                    </a>
+                    <a href="https://1progs.pro/adobe-creative-cloud/" class="link-item"><img
+                            src="https://cdn.simpleicons.org/adobecreativecloud/ED2224" class="link-icon"
+                            style="background:transparent; border:none; width:32px;">Creative Cloud</a>
+                    <a href="https://1progs.pro/adobe-muse/" class="link-item">
+                        <div class="link-icon icon-id">Mu</div> Adobe Muse
+                    </a>
+                    <a href="https://1progs.pro/adobe-brackets/" class="link-item"><img
+                            src="https://cdn.simpleicons.org/brackets/1E1E1E" class="link-icon"
+                            style="background:transparent; border:none; width:32px;">Adobe Brackets</a>
+                    <a href="https://1progs.pro/adobe-shockwave-player/" class="link-item">
+                        <div class="link-icon icon-gen">Sw</div> Shockwave Player
+                    </a>
+                </div>
+            </div>
+
+            <!-- Feedback Card -->
+            <div class="glass-card" style="text-align: center;">
+                <p class="welcome-text" style="margin-bottom: 2rem;">
+                    📝 После подтверждения заказа, пожалуйста, оставьте положительный отзыв.
+                    Это очень важно для развития моего магазина и помогает другим покупателям!
+                    Заранее огромное спасибо :)
+                </p>
+
+                <a href="https://playerok.com/profile/boywithalo/products" target="_blank" class="feedback-btn">
+                    <span>Подтвердить и оставить отзыв ♥</span>
+                    <span>Ваша поддержка мотивирует Нас быть лучше!</span>
+                </a>
+            </div>
+
+            <p style="text-align:center; opacity:0.3; font-size:1rem; margin-top:3rem; font-weight: 500;">boywithalo •
+                Premium Adobe Guide</p>
+        </div>
+
+        <div id="toast" class="copy-toast">Скопировано! ✅</div>
+
+        <script>
+            function copyKey(text) {
+                navigator.clipboard.writeText(text).then(() => {
+                    const toast = document.getElementById('toast');
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 2000);
+                });
+            }
+
+            // Anti-Inspect
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', e => {
+                if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85) || (e.ctrlKey && e.keyCode == 83)) {
+                    e.preventDefault();
+                }
+            });
+        </script>
+    </body>
+
+    </html>

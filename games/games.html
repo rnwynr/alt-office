@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <title>Самая лучшая база игр 2026 год</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --glass-bg: rgba(30, 30, 35, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.05);
+            --text-primary: #FFFFFF;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --accent-color: #0A84FF;
+            --accent-hover: #0060d1;
+            --success-color: #32D74B;
+            --radius-lg: 32px;
+            --radius-md: 20px;
+            --radius-sm: 12px;
+            --font-main: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --blur-amount: 40px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 80px;
+            -webkit-font-smoothing: antialiased;
+
+            /* Anti-tampering */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Animated Dark Mesh Gradient Background */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .watermark-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" opacity="0.02"><text x="20" y="50" transform="rotate(-30 0,0)" fill="%23FFFFFF" font-size="16" font-family="sans-serif" font-weight="bold">playerok.com/profile/boywithalo</text></svg>');
+            background-repeat: repeat;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: #2a0845;
+            top: -200px;
+            left: -200px;
+            animation-duration: 25s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: #082845;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: #450828;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-duration: 30s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(10vw, 5vh) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-5vw, 15vh) scale(0.9);
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        /* Header / Nav */
+        header {
+            margin-top: 60px;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .title {
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.6) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Info Banner */
+        .info-banner {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-amount));
+            -webkit-backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            font-size: 20px;
+            margin-right: 12px;
+        }
+
+        /* Search Bar & Filters */
+        .search-container {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            margin-bottom: 15px;
+            animation: fadeIn 1s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .search-box-wrapper {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(40, 40, 45, 0.85);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            padding: 14px 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .search-box:focus-within {
+            background: rgba(50, 50, 55, 0.95);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.3);
+        }
+
+        .search-icon {
+            color: var(--text-secondary);
+            margin-right: 12px;
+        }
+
+        .search-input {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 17px;
+            width: 100%;
+            outline: none;
+            font-family: var(--font-main);
+
+            /* Allow typing */
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Sort Button */
+        .sort-btn {
+            background: rgba(40, 40, 45, 0.85);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.2s;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .sort-btn:hover {
+            background: rgba(60, 60, 65, 0.9);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .sort-btn.active {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 15px rgba(10, 132, 255, 0.4);
+        }
+
+        /* Tags container (horizontal scroll) */
+        .tags-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            /* Hide scrollbar */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .tags-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tag-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            padding: 8px 16px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .tag-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+
+        .tag-btn.active {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Accounts List */
+        .accounts-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .account-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--blur-amount));
+            -webkit-backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+
+            /* Glow effect properties */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glow Effect on Hover using JS tracked mouse */
+        .account-card::before {
+            content: "";
+            position: absolute;
+            top: var(--mouse-y, -100px);
+            left: var(--mouse-x, -100px);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .account-card:hover::before {
+            opacity: 1;
+        }
+
+        .account-card * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .account-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .account-card:active {
+            transform: scale(0.98);
+            background: rgba(40, 40, 45, 0.5);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .game-title {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #fff;
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        /* Badges */
+        .badges-wrapper {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .game-badge {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-hit {
+            background: rgba(255, 59, 48, 0.15);
+            color: #FF453A;
+            border: 1px solid rgba(255, 59, 48, 0.3);
+        }
+
+        .badge-new {
+            background: rgba(10, 132, 255, 0.15);
+            color: #32ADE6;
+            border: 1px solid rgba(10, 132, 255, 0.3);
+        }
+
+        .credential-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: background 0.2s;
+        }
+
+        .credential-row:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .credential-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .credential-info {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            flex: 1;
+            margin-right: 15px;
+        }
+
+        .credential-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .credential-value {
+            font-size: 16px;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            /* Allow copying ONLY here */
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .copy-btn.success {
+            background: var(--success-color);
+            color: #000;
+        }
+
+        /* Sub Accounts */
+        .sub-account {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+
+        .sub-title {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Icons SVG */
+        .icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            display: none;
+        }
+
+        /* Clickable Watermark Badge */
+        .watermark-badge {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(30, 30, 35, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 20px;
+            border-radius: 50px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 900;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .watermark-badge:hover {
+            transform: translateY(-5px);
+            background: rgba(50, 50, 55, 0.9);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            box-shadow: 0 8px 30px rgba(10, 132, 255, 0.4);
+        }
+
+        .watermark-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 44px;
+            height: 44px;
+            background: rgba(30, 30, 35, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 900;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .scroll-to-top:hover {
+            background: rgba(50, 50, 55, 0.9);
+            transform: translateY(-5px);
+        }
+
+        /* Dynamic Island Toast Notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .toast {
+            background: rgba(25, 25, 30, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+            /* Animation */
+            animation: toastPopIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards, toastPopOut 0.4s cubic-bezier(0.16, 1, 0.3, 1) 2.5s forwards;
+        }
+
+        /* Mobile Blocker Overlay */
+        .mobile-blocker-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            z-index: 99999;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .mobile-blocker-overlay h1 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .mobile-blocker-overlay p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.5;
+            max-width: 400px;
+        }
+
+        .mobile-blocker-overlay svg {
+            width: 80px;
+            height: 80px;
+            fill: var(--accent-color);
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 850px) {
+            .mobile-blocker-overlay {
+                display: flex;
+            }
+
+            .container,
+            .scroll-to-top,
+            .watermark-badge {
+                display: none !important;
+            }
+        }
+
+        .toast-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--success-color);
+            color: #000;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .toast-icon svg {
+            width: 12px;
+            height: 12px;
+            fill: currentColor;
+        }
+
+        @keyframes toastPopIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes toastPopOut {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.8);
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            overflow: auto;
+        }
+
+        .modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 5vmin;
+            padding-bottom: 5vmin;
+        }
+
+        .modal-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            max-width: 700px;
+            width: 90%;
+            padding: 40px;
+            position: relative;
+            animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            color: var(--text-primary);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: var(--text-secondary);
+            font-size: 32px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .close-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .modal-content h2 {
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #fff;
+            padding-right: 40px;
+        }
+
+        .modal-content h3 {
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent-color);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .modal-content h4 {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-content p,
+        .modal-content li {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 10px;
+        }
+
+        .modal-content ol,
+        .modal-content ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .modal-content li {
+            margin-bottom: 8px;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius-md);
+            margin-top: 15px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: block;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 25px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-content table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .modal-content th,
+        .modal-content td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+
+        .modal-content th {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .modal-content tr:last-child td {
+            border-bottom: none;
+        }
+
+        .modal-content tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .heart-section h3 {
+            color: #ff4d4d;
+            border: none;
+            padding: 0;
+            margin-top: 0;
+        }
+
+        .heart-section ol {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Mobile Blocker Overlay -->
+    <div class="mobile-blocker-overlay">
+        <svg viewBox="0 0 24 24">
+            <path
+                d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z" />
+        </svg>
+        <h1>Доступно только с компьютера</h1>
+        <p>К сожалению, этот сайт не поддерживает мобильные устройства. Пожалуйста, откройте его с вашего ПК или
+            ноутбука.</p>
+    </div>
+
+    <div class="bg-mesh">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Background Watermark Pattern -->
+    <div class="watermark-bg"></div>
+
+    <!-- Dynamic Island Toasts Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="title">База Игр 2026</h1>
+            <p class="subtitle">Самая лучшая и полная коллекция аккаунтов</p>
+        </header>
+
+        <div class="info-banner">
+            <div class="info-item">
+                <span class="info-icon">⚠️</span>
+                <span><strong>ЕСТЬ ПРОБЛЕМА?</strong> (не заходит, нет игр, ошибка) <br><a href="#"
+                        onclick="openModal(event)"
+                        style="color:var(--accent-color); text-decoration:none; font-weight: 600;">СНАЧАЛА
+                        ПРОЧТИ ЭТО
+                        (99% решений уже там)</a></span>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🛡️</span>
+                <span><a href="#" onclick="openDenuvoModal(event)"
+                        style="color:var(--accent-color); text-decoration:none; font-weight: 600;">Защита Denuvo
+                        -
+                        Особенности запуска</a></span>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box-wrapper">
+                <div class="search-box">
+                    <svg class="search-icon icon" viewBox="0 0 24 24">
+                        <path
+                            d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                    </svg>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Поиск по играм..."
+                        autocomplete="off">
+                </div>
+                <button class="sort-btn" id="sortBtn" title="Сортировка А-Я">А-Я</button>
+            </div>
+
+            <div class="tags-container" id="tagsContainer">
+                <!-- Tags JS -->
+            </div>
+        </div>
+
+        <div class="accounts-grid" id="accountsGrid">
+            <!-- Cards will be injected here JS -->
+        </div>
+
+        <div class="empty-state" id="emptyState">
+            Игры не найдены. Попробуйте изменить фильтры.
+        </div>
+    </div>
+
+    <!-- Clickable Scroll To Top -->
+    <button class="scroll-to-top" id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z" />
+        </svg>
+    </button>
+
+    <!-- Clickable Store Watermark -->
+    <a href="https://playerok.com/profile/boywithalo/products" target="_blank" class="watermark-badge">
+        <svg viewBox="0 0 24 24">
+            <path
+                d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+        </svg>
+        Магазин: boywithalo
+    </a>
+
+    <!-- Instruction Modal -->
+    <div id="instructionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>🔧 Инструкция по использованию общих аккаунтов Steam</h2>
+
+            <h3>✅ Перед началом</h3>
+            <ol>
+                <li>Зайдите на аккаунт</li>
+                <li>Скачайте нужную игру</li>
+                <li>В Steam откройте Меню → Перейти в автономный режим</li>
+                <li>Запускайте игру только в автономном режиме</li>
+            </ol>
+            <img src="1.png" alt="Steam Offline Mode">
+
+            <h3>⚠️ Частые проблемы и решения</h3>
+
+            <h4>🔹 1. Вместо "Играть" — "Транслировать" или "Подключиться"</h4>
+            <p>➤ Нажмите стрелку рядом с кнопкой → выберите "Этот компьютер (This device)"</p>
+            <img src="2.png" alt="Play Option">
+
+            <h4>🔹 2. Ошибка при входе (5 или 50)</h4>
+            <p>➤ Аккаунт перегружен. Просто повторите попытку позже.</p>
+
+            <h4>🔹 3. Другие ошибки</h4>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>Код ошибки</th>
+                        <th>Что значит</th>
+                        <th>Решение</th>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Проблема с интернетом</td>
+                        <td>Проверьте подключение</td>
+                    </tr>
+                    <tr>
+                        <td>5, 50</td>
+                        <td>Перегрузка аккаунта</td>
+                        <td>Повторите вход позже</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>Проблемы на стороне Steam</td>
+                        <td>Подождите</td>
+                    </tr>
+                    <tr>
+                        <td>e87</td>
+                        <td>Временный бан по IP (5–10 мин)</td>
+                        <td>Подождите или используйте VPN</td>
+                    </tr>
+                    <tr>
+                        <td>e43</td>
+                        <td>Аккаунт больше не работает</td>
+                        <td>Напишите продавцу для замены</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>🎮 Дополнительно</h3>
+
+            <h4>📌 Игра не отображается в библиотеке</h4>
+            <p>➤ Меню Вид → Скрытые игры<br>➤ Найдите игру → ПКМ → Убрать из скрытого</p>
+            <img src="3.png" alt="Hidden Games">
+
+            <h4>📌 Кто-то играет на аккаунте</h4>
+            <p>➤ Отключите Remote Play:<br>Steam → Настройки → Remote Play → Снять галочку</p>
+
+            <h4>📌 Не работает онлайн</h4>
+            <p>➤ Это оффлайн-аккаунт — доступен только одиночный режим.</p>
+
+            <h4>📌 Мешают другие пользователи при загрузке</h4>
+            <p>➤ Используйте Big Picture:<br>Вид → Режим большого изображения → Загрузки<br>Оставайтесь в этом
+                режиме до
+                конца загрузки.<br>Даже при выходе из аккаунта загрузка продолжится.</p>
+            <img src="4.png" alt="Big Picture Mode">
+
+            <h4>📌 Много неудачных попыток входа</h4>
+            <p>➤ Закройте Steam через диспетчер задач и попробуйте позже.<br>➤ Также можно использовать VPN.</p>
+
+            <div class="heart-section">
+                <h3>❤️ Пожалуйста:</h3>
+                <ol>
+                    <li>Подтвердите выполнение заказа</li>
+                    <li>Оставьте отзыв</li>
+                    <li>Внимательно прочтите описание товара перед использованием</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Denuvo Modal -->
+    <div id="denuvoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeDenuvoModal()">&times;</span>
+            <h2>🛡️ Защита Denuvo</h2>
+
+            <h3>💡 Обратите внимание:</h3>
+            <p>Некоторые игры защищены системой Denuvo, установленной разработчиками. Она ограничивает
+                количество
+                одновременных запусков на разных устройствах.<br>
+                Из-за этого может появиться сообщение об ошибке активации при запуске.</p>
+            <img src="5.png" alt="Denuvo Error">
+
+            <h3>🔧 Что делать в этом случае:</h3>
+            <p>Вам необходимо поймать активацию Denuvo поставленную защитой разработчиков.<br>
+                Самое эффективное время — с 1:00 до 2:00 по МСК, когда нагрузка минимальна, но делать это ночью
+                не
+                обязательно, днём так-же можно словить активацию, чаще всего в данные промежутки времени:</p>
+            <ul>
+                <li><strong>10:00 — 12:00 (МСК)</strong> должна обновится 1 активация.</li>
+                <li><strong>12:30 — 13:30 (МСК)</strong> должна обновится 1 активация.</li>
+                <li><strong>19:00 — 21:00 (МСК)</strong> должна обновится 1 активация.</li>
+                <li><strong>22:00 — 00:00 (МСК)</strong> должна обновится 1 активация.</li>
+                <li><strong>00:00 — 01:00 (МСК)</strong> должна обновится 1 активация.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const database = [
+            { title: "Poppy Playtime 5", log: "vbpcr50257", pass: "pecwc63021", tags: ["Хорроры", "Популярные"] },
+            { title: "Poppy Playtime (1 + 2 + 3, 4)", log: "poppyxiajsh", pass: "playerok.com/profile/QAVIX", tags: ["Хорроры", "Популярные"] },
+            { title: "Resident Evil все части", log: "yczhw46123", pass: "CookieStore1122", tags: ["Хорроры"] },
+            { title: "Resident Evil 5, 4 (2005), 6, 2 (2019), 4 (2023)", log: "arks62", pass: "playerokTovarStoreRe", tags: ["Хорроры"] },
+            { title: "Spider-man 2, Black myth: Wukong, Vigil...", log: "Wukong1488", pass: "7Vfnbkmlf13", tags: ["Новинки", "Хиты", "Экшен"], isNew: true, isHit: true },
+            { title: "Spider-Man miles morales, Forza horizon 5", log: "hdpxu36706", pass: "mnvqu33267", tags: ["Экшен", "Гонки", "Хиты"], isHit: true },
+            { title: "Dying light 1, Forza horizon 4, the forest, Garry's mod, project zomboid, terraria...", log: "pr0mitey1", pass: "H0dp9tyN-a", tags: ["Выживание", "Песочница", "Хорроры"] },
+            { title: "Dying light 2, Resident evil Village", log: "budz_420_marley", pass: "ezskydream", tags: ["Выживание", "Хорроры"] },
+            { title: "R.E.P.O", log: "anthonykelly1972", pass: "TovarStore123", tags: [] },
+            { title: "S.t.a.l.k.e.r 2, Hogwarts legacy, spider-man Miles morales, Forza horizon 5", log: "hdpxu36706", pass: "mnvqu33267", tags: ["Новинки", "Хиты", "Шутеры", "Экшен"], isNew: true, isHit: true },
+            { title: "Gta 5 (Steam)", log: "mano_max0", pass: "TovarStoreGtaV1K", tags: ["Популярные", "Открытый мир"], extra: { title: "Social club", log: "tovarestoreplayerok@gmail.com", pass: "PlayeRok666@" } },
+            { title: "Red dead redemption 2 (Steam)", log: "ipyoo01103", pass: "TovarStoreRDR2", tags: ["Популярные", "Открытый мир"], extra: { title: "Social club", log: "tbiznes82@gmail.com", pass: "TovarStoreRDR2" } },
+            { title: "Atomic heart", log: "android_gamer228", pass: "ZZZZZrr1341", tags: ["Экшен", "Шутеры"] },
+            { title: "God of war, God of war Ragnarok", log: "krishurt9p", pass: "wTrekfan66!vrz", tags: ["Экшен", "Хиты"], isHit: true },
+            { title: "SnowRunner, Content Warning", log: "Kent0di2", pass: "BestReSeller#1", tags: ["Симуляторы"] },
+            { title: "Разные игры", log: "holqqaa", pass: "playerok.com/profile/QAVIX", tags: [] },
+            { title: "Teardown, Geometry Dash, Phasmophobia, Terraria, Wallpaper Engine, Metro все части", log: "qavix2231", pass: "playerok.com/profile/QAVIX", tags: ["Песочница", "Хорроры"] },
+            { title: "Euro Truck Simulator 2, Assetto corsa", log: "ets2xiajsh", pass: "https://playerok.com/profile/QAVIX/products", tags: ["Симуляторы", "Гонки"] },
+            { title: "Gta 5, Red Dead Redemption 2", log: "gtaredqqq", pass: "playerok.com/profile/QAVIX", tags: ["Популярные", "Открытый мир"] },
+            { title: "BeamNG.drive, Garrys Mod, Hearts of Iron IV", log: "beamngg34", pass: "playerok.com/profile/QAVIX", tags: ["Песочница", "Симуляторы"] },
+            { title: "God of War Рагнарёк, God of War, Dying Light 2: Reloaded, Ghost of Tsushima", log: "qavix221", pass: "playerok.com/profile/QAVIX", tags: ["Экшен", "Хиты"] },
+            { title: "Sons Of The Forest, The Forest", log: "sonss22", pass: "playerok.com/profile/QAVIX", tags: ["Выживание", "Хорроры"] },
+            { title: "Mortal Kombat 11, Mortal Kombat X, Forza Horizon 5", log: "qqq2549", pass: "playerok.com/profile/QAVIX", tags: ["Файтинги", "Популярные"] },
+            { title: "Schedule I, Frostpunk, Assetto Corsa, People Playground", log: "qavix22", pass: "playerok.com/profile/QAVIX", tags: ["Симуляторы"] },
+            { title: "Five Nights at Freddy’s: Secret of the Mimic", log: "fredglover1960", pass: "nqszzger9229$!1v0", tags: ["Хорроры"] },
+            { title: "Mortal Kombat 1", log: "unaccustomedsle", pass: "playerokTovarStoreMK", tags: ["Файтинги"] },
+            { title: "Все части Metro", log: "playeroksteam", pass: "playerokTovarStore228", tags: ["Шутеры", "Хорроры"] },
+            { title: "BeamNG.drive, Mafia II, people playground, Metro exodus, Portal 2... (сборник)", log: "nfs_mostwanted2005", pass: "mazone_shop_nfsmw2005", tags: ["Популярные"] },
+            { title: "Call of Duty: Infinite Warfare", log: "maxiek_d", pass: "ZZZZZrr1310", tags: ["Шутеры"] },
+            { title: "Call of Duty Black Ops (2010)", log: "dorstroi", pass: "Ena0930ad", tags: ["Шутеры"] },
+            { title: "Call of Duty Modern Warfare 3 (2011), Call of Duty®", log: "malermeistermoritz", pass: "PANDA&THUNDEr122!", tags: ["Шутеры"] },
+            { title: "Call of Duty 4: Modern warfare (2007)", log: "exorsistbr", pass: "afq@exuvima", tags: ["Шутеры"] },
+            { title: "Call of Duty Black Ops 1, Call of Duty®", log: "donaldbuck555", pass: "PANDATHUNDER228", tags: ["Шутеры"] },
+            { title: "Call of Duty Black Ops II, Call of Duty: World at War", log: "1366626", pass: "xczvdf23423", tags: ["Шутеры"] },
+            { title: "Call of Duty®: Modern Warfare® I & II", log: "amyrivera7j", pass: "v3ctaAvMRm1987", tags: ["Шутеры", "Хиты"], isHit: true },
+            { title: "Call of Duty 2, Call of Duty®", log: "efoxpl3247", pass: "ZZZZZrr1315", tags: ["Шутеры"] },
+            { title: "Call of Duty: Modern Warfare 2", log: "lucienne02", pass: "TZEKZ7XA4EFG", tags: ["Шутеры"] },
+            { title: "No, I'm not a Human, Postal 2, Cyberpunk 2077, The Witcher 3, Elden Ring, Atomic heart...", log: "cerinosio1", pass: "CerinoSio1SI", tags: ["Популярные", "Хиты"] },
+            { title: "Hitman 2, Sunkeland, Phasmopobia", log: "forpostery", pass: "M7N4z4v77rfc24N", tags: ["Хорроры", "Экшен"] },
+            { title: "Euro truck simulator 2, Getting over it, MudRunner, Geometry Dash, Half-life...", log: "zsmrh53173", pass: "dY4-pcdrqewr523Rq", tags: ["Популярные"] },
+            { title: "Tiny Bunny", log: "numbys553", pass: "D*14HY0z", tags: ["Хорроры"] },
+            { title: "Subnautica, Batman, Metro, Portal 2, Mafia 1-2-3, The Forest, Ведьмак 2...", log: "muyax11132", pass: "uvffx09530", tags: ["Популярные", "Выживание", "Хиты"] }
+        ];
+
+        const allTags = ["Все игры", "🔥 Хиты", "🆕 Новинки", "Популярные", "Хорроры", "Экшен", "Шутеры", "Открытый мир", "Выживание", "Гонки", "Симуляторы", "Песочница", "Файтинги"];
+        let currentActiveTag = "Все игры";
+        let isSortedAlpha = false;
+
+        const copyIcon = `<svg class="icon" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>`;
+        const checkIcon = `<svg class="icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>`;
+
+        // TOAST NOTIFICATION LOGIC
+        function showToast(label) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `
+                <div class="toast-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
+                <span>${label} скопирован(а)</span>
+            `;
+            container.appendChild(toast);
+
+            // Remove after animation (3.5s total)
+            setTimeout(() => {
+                toast.remove();
+            }, 3500);
+        }
+
+        function createCredentialRow(label, value) {
+            return `
+                <div class="credential-row">
+                    <div class="credential-info">
+                        <span class="credential-label">${label}</span>
+                        <span class="credential-value" translate="no">${value}</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyText(this, '${value.replace(/'/g, "\\'")}', '${label}')" aria-label="Copy ${label}">
+                        ${copyIcon}
+                    </button>
+                </div>
+            `;
+        }
+
+        function createCard(item, index) {
+            let badges = "";
+            if (item.isHit) badges += `<span class="game-badge badge-hit">🔥 ХИТ</span>`;
+            if (item.isNew) badges += `<span class="game-badge badge-new">🆕 НОВИНКА</span>`;
+
+            let html = `
+                <div class="account-card" style="animation-delay: ${0.05 * Math.min(index, 20)}s" onmousemove="handleGlow(event, this)">
+                    <div class="card-header">
+                        <h3 class="game-title">${item.title}</h3>
+                        <div class="badges-wrapper">${badges}</div>
+                    </div>
+                    ${createCredentialRow('Логин', item.log)}
+                    ${createCredentialRow('Пароль', item.pass)}
+            `;
+
+            if (item.extra) {
+                html += `
+                    <div class="sub-account">
+                        <h4 class="sub-title">${item.extra.title}</h4>
+                        ${createCredentialRow('Логин', item.extra.log)}
+                        ${createCredentialRow('Пароль', item.extra.pass)}
+                    </div>
+                `;
+            }
+
+            html += `</div>`;
+            return html;
+        }
+
+        // GLOW EFFECT MOUSE TRACKER
+        function handleGlow(e, card) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        }
+
+        function initTags() {
+            const container = document.getElementById('tagsContainer');
+            container.innerHTML = "";
+            allTags.forEach(tag => {
+                const btn = document.createElement('button');
+                btn.className = `tag-btn ${tag === currentActiveTag ? 'active' : ''}`;
+                btn.innerText = tag;
+                btn.onclick = () => {
+                    currentActiveTag = tag;
+                    initTags(); // re-render to update active class
+                    renderCards(document.getElementById('searchInput').value);
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function renderCards(filterText = "") {
+            const grid = document.getElementById('accountsGrid');
+            const emptyState = document.getElementById('emptyState');
+            grid.innerHTML = "";
+            let count = 0;
+
+            const lowerFilter = filterText.toLowerCase();
+
+            // Prepare array (filter & sort)
+            let filteredDb = database.filter((item) => {
+                // Text match
+                const matchesText = item.title.toLowerCase().includes(lowerFilter) ||
+                    item.log.toLowerCase().includes(lowerFilter) ||
+                    (item.extra && item.extra.title.toLowerCase().includes(lowerFilter));
+
+                // Tag match
+                let matchesTag = false;
+                if (currentActiveTag === "Все игры") {
+                    matchesTag = true;
+                } else if (currentActiveTag === "🔥 Хиты" && item.isHit) {
+                    matchesTag = true;
+                } else if (currentActiveTag === "🆕 Новинки" && item.isNew) {
+                    matchesTag = true;
+                } else if (item.tags && item.tags.includes(currentActiveTag)) {
+                    matchesTag = true;
+                }
+
+                return matchesText && matchesTag;
+            });
+
+            if (isSortedAlpha) {
+                filteredDb.sort((a, b) => a.title.localeCompare(b.title));
+            }
+
+            // Render
+            filteredDb.forEach((item) => {
+                grid.insertAdjacentHTML('beforeend', createCard(item, count));
+                count++;
+            });
+
+            if (count === 0) {
+                emptyState.style.display = "block";
+            } else {
+                emptyState.style.display = "none";
+                setTimeout(() => {
+                    document.querySelectorAll('.account-card').forEach(card => card.classList.add('visible'));
+                }, 10);
+            }
+        }
+
+        window.copyText = function (btn, text, label) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Change icon
+                btn.innerHTML = checkIcon;
+                btn.classList.add('success');
+
+                // Show Dynamic Toast Notification
+                showToast(label);
+
+                setTimeout(() => {
+                    btn.innerHTML = copyIcon;
+                    btn.classList.remove('success');
+                }, 2000);
+            }).catch(err => {
+                console.error("Copy failed", err);
+            });
+        };
+
+        // UI Modals
+        window.openModal = function (e) {
+            if (e) e.preventDefault();
+            document.getElementById('instructionModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        };
+        window.closeModal = function () {
+            document.getElementById('instructionModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        };
+        window.openDenuvoModal = function (e) {
+            if (e) e.preventDefault();
+            document.getElementById('denuvoModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        };
+        window.closeDenuvoModal = function () {
+            document.getElementById('denuvoModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        };
+
+        // Scroll Logic & Outside click
+        window.onclick = function (event) {
+            const instrModal = document.getElementById('instructionModal');
+            const denuvoModal = document.getElementById('denuvoModal');
+            if (event.target == instrModal) {
+                closeModal();
+            } else if (event.target == denuvoModal) {
+                closeDenuvoModal();
+            }
+        };
+
+        window.onscroll = function () {
+            const btn = document.getElementById('scrollTopBtn');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        };
+
+        // Anti-Tamper & Anti-Inspect Logic
+        document.addEventListener('contextmenu', event => {
+            const isTextElement = event.target.tagName === 'INPUT' || event.target.classList.contains('credential-value');
+            if (!isTextElement) {
+                event.preventDefault();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.keyCode == 123 ||
+                (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 67 || e.keyCode == 74)) ||
+                (e.ctrlKey && e.keyCode == 85) ||
+                (e.ctrlKey && e.keyCode == 83)) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Prevent viewing on mobile browsers
+        function checkMobile() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isSmallScreen = window.innerWidth < 1250;
+
+            if (isMobile || isSmallScreen) {
+                document.body.innerHTML = `
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 20px;">
+                        <div>
+                            <svg viewBox="0 0 24 24" style="width: 80px; height: 80px; fill: #0A84FF; margin-bottom: 20px;">
+                                <path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/>
+                            </svg>
+                            <h1 style="font-size: 24px; margin-bottom: 15px;">Доступно только с компьютера</h1>
+                            <p style="font-size: 16px; color: rgba(255,255,255,0.7); max-width: 400px; margin: 0 auto; line-height: 1.5;">К сожалению, этот сайт не поддерживает мобильные устройства. Пожалуйста, откройте его с вашего ПК или ноутбука.</p>
+                        </div>
+                    </div>
+                `;
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            initTags();
+            renderCards();
+
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                renderCards(e.target.value);
+            });
+
+            document.getElementById('sortBtn').addEventListener('click', (e) => {
+                isSortedAlpha = !isSortedAlpha;
+                e.target.classList.toggle('active');
+                renderCards(document.getElementById('searchInput').value);
+            });
+
+            document.querySelectorAll('img').forEach(img => {
+                img.setAttribute('draggable', false);
+            });
+        });
+    </script>
+</body>
+
+</html>
